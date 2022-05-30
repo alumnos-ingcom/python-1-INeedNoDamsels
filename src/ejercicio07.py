@@ -7,10 +7,10 @@
 7. Transformación de un número
 
 Precondiciones:
-    Los valores ingresados deben ser números enteros positivos o cero/s.
+    Los valores ingresados deben ser números enteros mayores o iguales a cero.
 Poscondiciones:
-    Los resultados obtenidos deben ser números enteros positivos.
-    Los resultados obtenidos deben ser la correcta conversión de valores.
+    Los resultados obtenidos deben ser números enteros mayores o iguales a cero.
+    Los resultados obtenidos deben ser la correcta conversión de temperaturas.
 """
 
 def sexadecimal_a_decimal(horas, minutos, segundos):
@@ -52,11 +52,18 @@ def principal():
     segundos = int(input(" >> Seg: "))
     assert (horas >= 0) and (minutos >= 0) and (segundos >= 0), "No se cumplen las precondiciones."
 
+    if segundos >= 60:
+        minutos += 1
+        segundos -= 60
+    if minutos >= 60:
+        minutos -= 60
+        horas += 1
+
     decimal_a = sexadecimal_a_decimal(horas, minutos, segundos)
     print(f"    {horas}° {minutos}' {segundos}\" equivale a {decimal_a}\"")
 
     decimal_b = int(input("\nAhora, ingrese un número entero positivo: "))
-    assert decimal_b >= 0, "Oh sh*t, here we go again..."
+    assert decimal_b >= 0, "Ah sh*t, here we go again..."
     valor_h, valor_m, valor_s = decimal_a_sexadecimal(decimal_b)
     print(f"    {decimal_b}\" equivalen a {valor_h}° {valor_m}' {valor_s}\"")
 

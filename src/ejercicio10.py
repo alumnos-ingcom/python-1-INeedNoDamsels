@@ -28,7 +28,7 @@ def es_palindromo(texto):
             cantidad_iguales += 1
         i += 1
 
-    valor_verdad = bool(cantidad_iguales = len(texto))
+    valor_verdad = bool(cantidad_iguales == len(texto))
 
     return valor_verdad
 

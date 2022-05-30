@@ -18,7 +18,9 @@ def es_multiplo(numero, multiplo):
     """
     valor_verdad = None
     while abs(numero) >= abs(multiplo):
-        if (numero < 0) or (multiplo < 0):
+        if (numero < 0) and (multiplo < 0):
+            numero -= multiplo
+        elif (numero < 0) or (multiplo < 0):
             numero += multiplo
         else:
             numero -= multiplo
@@ -35,7 +37,7 @@ def principal():
     print("Ingrese un valor numérico entero para A y B:")
     valor_a = int(input(" >> A: "))
     valor_b = int(input(" >> B: "))
-    assert (valor_a != 0) and (valor_b != 0), "Demonios, has vuelto a fallar."
+    assert valor_b != 0, "Ni se te ocurra..."
 
     valor_verdad = es_multiplo(valor_a, valor_b)
     print(f"\n¿Será {valor_a} múltiplo de {valor_b}...? ¡{valor_verdad}!")
